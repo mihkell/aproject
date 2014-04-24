@@ -1,0 +1,16 @@
+
+
+src/test/*
+.springbeans
+
+#eclipse conf files
+*.prefs
+*.launch
+/.classpath
+/.project
+/.settings
+/tomcat.*
+/.idea
+/*.iml
+
+/bin
