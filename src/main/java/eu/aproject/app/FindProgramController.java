@@ -102,7 +102,7 @@ public class FindProgramController implements IController{
 
 	}
 
-	private Date getStartDate(HttpServletRequest request){
+	public Date getStartDate(HttpServletRequest request){
 
 		String day = request.getParameter("day");
 		String month = request.getParameter("month");
@@ -112,7 +112,7 @@ public class FindProgramController implements IController{
 
 	}
 
-	private Date getEndDate(HttpServletRequest request) {
+	public Date getEndDate(HttpServletRequest request) {
 
 		String endday = request.getParameter("endday");
 		String endmonth = request.getParameter("endmonth");
@@ -122,7 +122,7 @@ public class FindProgramController implements IController{
 
 	}
 
-	private Date getThisYearDate(String hours, String day, String month){
+	public Date getThisYearDate(String hours, String day, String month){
 
 		Calendar calendar = Calendar.getInstance();
 		calendar.setLenient(false);
@@ -132,15 +132,19 @@ public class FindProgramController implements IController{
 			return null;
 		}
 		
-		calendar.set(year, Integer.parseInt(month)-1,
-				Integer.parseInt(day), Integer.parseInt(hours),
-				0);
+		try {
+			calendar.set(year, Integer.parseInt(month)-1,
+					Integer.parseInt(day), Integer.parseInt(hours),
+					0);
+			
+			return calendar.getTime();
+			
+		} catch (Exception e) {
+			return null;
+		}
 		
-		return calendar.getTime();
 
 	}
-
-
 
 
 }
